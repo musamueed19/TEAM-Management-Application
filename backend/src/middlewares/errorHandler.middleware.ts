@@ -1,4 +1,5 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
+import { httpStatus } from "../config/http.config";
 
 export const errorHandler: ErrorRequestHandler = (
   error,
@@ -8,12 +9,12 @@ export const errorHandler: ErrorRequestHandler = (
 ): any => {
   console.error(`Error Occurred on PATH: ${req.path}`, error);
   if (error instanceof SyntaxError) {
-    return res.status(400).send({
+    return res.status(httpStatus.BAD_REQUEST).send({
       success: false,
       message: "Invalid JSON format. Please check your request body",
     });
   }
-  return res.status(500).send({
+  return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
     success: false,
     message: "Internal Server Error",
     error: error?.message || "Unknown error occurred",

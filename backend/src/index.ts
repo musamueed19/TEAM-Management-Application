@@ -10,6 +10,7 @@ import session from "cookie-session";
 import { config } from "./config/app.config";
 import connectionDatabase from "./config/database.config";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
+import { httpStatus } from "./config/http.config";
 
 // create express app
 const app = express();
@@ -42,7 +43,7 @@ app.use(
 
 // GET '/'
 app.get(`/`, (req: Request, res: Response, next: NextFunction) =>
-  res.status(200).send({
+  res.status(httpStatus.OK).send({
     success: true,
     message: "Ahsan, Give me your Pu**y",
   })
@@ -52,7 +53,7 @@ app.get(`/`, (req: Request, res: Response, next: NextFunction) =>
 app.get(
   `${BASE_PATH}/health`,
   (req: Request, res: Response, next: NextFunction) =>
-    res.status(200).send({
+    res.status(httpStatus.OK).send({
       success: true,
       message: "API is healthy",
     })
