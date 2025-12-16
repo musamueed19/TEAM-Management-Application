@@ -45,7 +45,7 @@ app.use(
 // GET '/'
 app.get(
   `/`,
-  asyncHandler((req: Request, res: Response, next: NextFunction) => {
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     return res.status(httpStatus.OK).send({
       success: true,
       message: "Ahsan, Give me your Pu**y",
@@ -56,7 +56,7 @@ app.get(
 // GET HEALTH
 app.get(
   `${BASE_PATH}/health`,
-  asyncHandler((req: Request, res: Response, next: NextFunction) => {
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     return res.status(httpStatus.OK).send({
       success: true,
       message: "API is healthy",
