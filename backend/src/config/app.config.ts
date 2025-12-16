@@ -1,4 +1,4 @@
-import { getEnv } from "../utils/get.env.js";
+import { getEnv } from "../utils/get.env";
 
 const appConfig = () => ({
   PORT: parseInt(getEnv("PORT", "8000"), 10),
@@ -22,6 +22,5 @@ const appConfig = () => ({
   FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN"),
   FRONTEND_GOOGLE_CALLBACK_URL: getEnv("FRONTEND_GOOGLE_CALLBACK_URL"),
 });
-
 
 export const config = appConfig();
