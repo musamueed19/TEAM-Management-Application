@@ -1,0 +1,7 @@
+node_modules/
+
+# destination folder for compiled JavaScript files
+dist/
+
+# env
+.env
