@@ -8,6 +8,8 @@ import express, {
 import cors from "cors";
 import session from "cookie-session";
 import { config } from "./config/app.config";
+import connectionDatabase from "./config/database.config";
+import { errorHandler } from "./middlewares/errorHandler.middleware";
 
 // create express app
 const app = express();
@@ -39,25 +41,29 @@ app.use(
 );
 
 // GET '/'
-app.get(`/`, (req: Request, res: Response, next: NextFunction) => {
+app.get(`/`, (req: Request, res: Response, next: NextFunction) =>
   res.status(200).send({
     success: true,
     message: "Ahsan, Give me your Pu**y",
-  });
-});
+  })
+);
 
 // GET HEALTH
 app.get(
   `${BASE_PATH}/health`,
-  (req: Request, res: Response, next: NextFunction) => {
+  (req: Request, res: Response, next: NextFunction) =>
     res.status(200).send({
       success: true,
       message: "API is healthy",
-    });
-  }
+    })
 );
 
+app.use(errorHandler);
+
 // start the server, setup listner
-app.listen(config.PORT, () => {
-  console.log(`Server is running on port ${config.PORT}`);
+app.listen(config.PORT, async () => {
+  console.log(
+    `Server is running on port ${config.PORT}\nBase Path: ${BASE_PATH}\nWebiste: https://temixa.vercel.app\nLocal Development URL: http://localhost:${config.PORT}${BASE_PATH}`
+  );
+  await connectionDatabase();
 });
