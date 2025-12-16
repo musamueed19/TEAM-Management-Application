@@ -41,21 +41,19 @@ export class InternalServerException extends AppError {
 }
 
 export class BadRequestException extends AppError {
-    constructor(
-        message: string = 'Bad Request',
-        statusCode: HttpStatusCodeType = httpStatus.BAD_REQUEST,
-        errorCode: ErrorCodeEnumType = ErrorCodeEnum.VALIDATION_ERROR
-    ) {
-        super(message, statusCode, errorCode);
-    }
+  constructor(
+    message: string = "Bad Request",
+    errorCode: ErrorCodeEnumType = ErrorCodeEnum.VALIDATION_ERROR
+  ) {
+    super(message, httpStatus.BAD_REQUEST, errorCode);
+  }
 }
 
 export class UnauthorizedException extends AppError {
-    constructor(
-        message: string = 'Unauthorized',
-        statusCode: HttpStatusCodeType = httpStatus.UNAUTHORIZED,
-        errorCode: ErrorCodeEnumType = ErrorCodeEnum.AUTH_UNAUTHORIZED
-    ) {
-        super(message, statusCode, errorCode);
-    }
+  constructor(
+    message: string = "Unauthorized",
+    errorCode: ErrorCodeEnumType = ErrorCodeEnum.AUTH_UNAUTHORIZED
+  ) {
+    super(message, httpStatus.UNAUTHORIZED, errorCode);
+  }
 }
