@@ -39,16 +39,14 @@ app.use(
 );
 
 // GET '/'
-app.get(
-  `/`,
-  (req: Request, res: Response, next: NextFunction) => {
-    res.status(200).send({
-      success: true,
-      message: "Ahsan, Give me your Pu**y",
-    });
-  }
+app.get(`/`, (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).send({
+    success: true,
+    message: "Ahsan, Give me your Pu**y",
+  });
+});
 
-  // GET HEALTH
+// GET HEALTH
 app.get(
   `${BASE_PATH}/health`,
   (req: Request, res: Response, next: NextFunction) => {
